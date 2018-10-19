@@ -1,34 +1,61 @@
-const journalEntries = [
-   {
-      date: "07/24/2018",
-      concept: "Array methods",
-      entry: "We learned about 4 different array methods today. forEach made sense, but the others still confuse me.",
-      mood: "Ok"
-  },
-    {
-  date: "10/08/2018",
-  concept: "Flexbox",
-  entry: "We learned about using flexbox to style our pages",
-  mood: "fine"
-  },
-  {
-    date: "10/17/2018",
-    concept: "Handling data",
-    entry: "We learned about JavaScript to pull important information out of large data files.",
-    mood: "happy",
-  },
-]
+// Create elements that will be built up later based on the query and added to the DOM
+let entryLog = document.querySelector(".entryLog");
+let fragment = document.createDocumentFragment(); 
 
-const entryLog = document.querySelector(".entryLog");
-
-const makeJournalEntry = (...props)=>{
-  return `<p>Today is: ${props[0]}. We learned about ${props[1]}. ${props[2]}`
+const makeJournalEntry = (el, content, {id, clazz}, ...children)=>
+{
+  let element = document.createElement(el)
+  element.innerHTML = content || null
+  children.forEach((child)=>{
+    element.appendChild(child)
+  })
+  element.setAttribute("id", id)
+  element.setAttribute("class", clazz)
+  return element
 }
 
-let journalEntry = ""
-journalEntries.forEach((journal)=> {
-  journalEntry = `${makeJournalEntry(journal.date, journal.concept, journal.entry)}`
-  entryLog.innerHTML += journalEntry
-})
+// Fetch data from entries.json (owned data source)
+fetch("http://localhost:8088/entries")
+  .then((entries)=> entries.json()) //Transition fetch response from JSON to JS
+  .then((entry)=>{
+    // Loop over converted JS information to create each of the elements
+    entry.forEach((journal)=>{
+      
+      // Make h3 element with title
+      let concept = makeJournalEntry("h3", journal.concept, {
+        id: null,
+        clazz: "journalConcept",
+      })
+      
+      // Make p element with date
+      let date = makeJournalEntry("p", journal.date, {
+        id: null,
+        clazz: "journalDate",
+      })
+      
+      // Make a p element to contain mood
+      let mood = makeJournalEntry("p", `I am feeling ${journal.mood}`, {
+        id: null,
+        clazz: "journalMood",
+      })
+      
+      // Make a p element to contain entry
+      let entry = makeJournalEntry("p", journal.entry, {
+        id: null,
+        clazz: "journalEntry",
+      })
 
+      // Make a section composed of the h3 and p elements
+      let journalEntry = makeJournalEntry("section", null, {
+        id: null,
+        clazz: "journalSubmission"
+      }, concept, date, entry, mood)
+      
+      // Attach the new section to the fragment
+      fragment.appendChild(journalEntry)
+    })
+    
+    // Insert the fragment into the DOM as children of the Entry Log section in index.html
+    entryLog.appendChild(fragment)
+  })
 

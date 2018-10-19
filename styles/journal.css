@@ -7,3 +7,21 @@ fieldset{
   display:flex;
   flex-direction: column;
 }
+
+.journalConcept{
+  font-size: 1.5em;
+  font-weight: bold;
+  font-family: "Courier New", Courier, monospace;
+}
+
+p {
+  font-family: "Courier New", Courier, monospace;
+}
+
+form {
+  font-family: "Courier New", Courier, monospace;
+}
+
+button{
+  font-family: "Courier new", Courier, monospace;
+}
