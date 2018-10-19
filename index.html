@@ -8,41 +8,54 @@
   <title>Document</title>
 </head>
 <body>
-  <form action=""> 
-    <fieldset>
-      <label for="journalDate">Date of entry</label>
-      <input type="date" name="journalDate" id="journalDate">
-    </fieldset>
-    <!-- Concepts covered. A short input field of type text where you enter what concepts were covered and are driving journal entry -->
-    <fieldset>
-      <label for="conceptsCovered">Concepts Covered</label>
-      <input type="text" name="conceptsCovered" id="conceptsCovered">
-    </fieldset>
-    <!-- Journal entry. This is a textarea field where you can enter as much text about what you learned, how you felt, and your plans for the upcoming days-->
-    <fieldset>
-      <label for="journalEntry">Journal Entry</label>
-      <textarea name="journalEntry" id="journalEntry" cols="30" rows="5"></textarea>
-    </fieldset>
+  <h1>Daily Journal</h1>
+  <div class="flexbox">
+    <div class="formAndButton">
 
-    <!-- Mood. This should be a select element with as many option child elements as you would like to describe your mood for the day. You can start with the simple happy, fine, and sad values or pick your own scaling system -->
-    <fieldset>
-      <label for="mood">Mood for the day</label>
-      <select name="mood" id="mood">
-        <option value="happy">Happy</option>
-        <option value="sad">Sad</option>
-        <option value="frustrated">Frustrated</option>
-        <option value="fine">Fine</option>
-      </select>
-    </fieldset>
-  </form>
+      <form action=""> 
+        <fieldset>
+          <label for="journalDate">Date of entry</label>
+          <input type="date" name="journalDate" id="journalDate">
+        </fieldset>
+        
+        <!-- Author Name. A short input field of type text where you enter the name of the journal entry author. -->
+        <fieldset>
+            <label for="authorName">Author Name</label>
+            <input type="text" name="authorName" id="authorName">
+          </fieldset>
 
-  <!-- After you have completed the form, place a button element beneath it labeled Record Journal Entry, or any other text that you would like -->
-  <button type="button" id="journalEntryButton">Record Journal Entry</button>
-
-  <!-- Container for all journal entries to be placed from JS -->
-  <article class="entryLog">
+        <!-- Concepts covered. A short input field of type text where you enter what concepts were covered and are driving journal entry -->
+        <fieldset>
+          <label for="conceptsCovered">Concepts Covered</label>
+          <input type="text" name="conceptsCovered" id="conceptsCovered">
+        </fieldset>
+        <!-- Journal entry. This is a textarea field where you can enter as much text about what you learned, how you felt, and your plans for the upcoming days-->
+        <fieldset>
+          <label for="journalEntry">Journal Entry</label>
+          <textarea name="journalEntry" id="journalEntry" cols="60" rows="10"></textarea>
+        </fieldset>
+        
+        <!-- Mood. This should be a select element with as many option child elements as you would like to describe your mood for the day. You can start with the simple happy, fine, and sad values or pick your own scaling system -->
+        <fieldset>
+          <label for="mood">Mood for the day</label>
+          <select name="mood" id="mood">
+            <option value="happy">Happy</option>
+            <option value="sad">Sad</option>
+            <option value="frustrated">Frustrated</option>
+            <option value="fine">Fine</option>
+          </select>
+        </fieldset>
+      </form>
+      
+      <!-- After you have completed the form, place a button element beneath it labeled Record Journal Entry, or any other text that you would like -->
+      <button type="button" id="journalEntryButton">Record Journal Entry</button>
+    </div>
     
-  </article>
+    <!-- Container for all journal entries to be placed from JS -->
+    <article class="entryLog">
+      
+    </article>
+  </div>
   <script src="scripts/journal.js"></script>
 </body>
 </html>

@@ -32,6 +32,12 @@ fetch("http://localhost:8088/entries")
         id: null,
         clazz: "journalDate",
       })
+
+      // Make p element with author name
+      let author = makeJournalEntry("p", journal.name, {
+        id: null,
+        clazz: "journalAuthor",
+      })
       
       // Make a p element to contain mood
       let mood = makeJournalEntry("p", `I am feeling ${journal.mood}`, {
@@ -49,7 +55,7 @@ fetch("http://localhost:8088/entries")
       let journalEntry = makeJournalEntry("section", null, {
         id: null,
         clazz: "journalSubmission"
-      }, concept, date, entry, mood)
+      }, concept, date, author, entry, mood)
       
       // Attach the new section to the fragment
       fragment.appendChild(journalEntry)
