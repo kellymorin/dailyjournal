@@ -1,5 +1,3 @@
-// import makePage from "./DOMmanager"
-
  const makeElement = {
   elementFactory: (el, attributesObj, content, ...children)=>{
     let element = document.createElement(el)
