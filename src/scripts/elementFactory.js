@@ -1,4 +1,6 @@
- const makeElement = {
+// ElementFactory.js: Loop over provided information and create HTML element that can be displayed in the DOM
+
+const makeElement = {
   elementFactory: (el, attributesObj, content, ...children)=>{
     let element = document.createElement(el)
     // Set Attributes

@@ -4,34 +4,75 @@ In your main JavaScript module (journal.js) add a click event listener to the Re
 
 */
 
-import makePage from "./DOMmanager"
+import validateJournalEntry from "./validatedata"
+import makePage from "./makePage"
+import buildEntry from "./entryComponent"
+import JournalEntry from "./journal";
 
 if (document.readyState === "loading"){
   makePage.initiateForm();
 }
 
+let journal = [{
+  concept: "something",
+  date: "10/21/2018",
+  name: "Kelly",
+  mood: "happy",
+  entry: "We learned some really difficult things today."
+},
+{
+  concept: "santa",
+  date: "10/28/2018",
+  name: "Kelly",
+  mood: "sad",
+  entry: "Why santa no here yet?"
+}
+
+]
+
+journal.forEach((journal)=>buildEntry.makeEntryElements(journal))
+
+
+
+// const form = document.querySelector("form")
+// export default form
+
 document.querySelector("#journalEntryButton").addEventListener("click", (event)=>{
   event.preventDefault()
-  let form = document.querySelector("form")
-  validateJournalEntry.noEmptyValues(form);
+  console.log("the form has been clicked")
 
-
-  if(form.checkValidity()=== true){
-    const entry = new journalEntry({
+  validateJournalEntry.noEmptyValues()
+  if(validateJournalEntry.clearStatus === true){
+    console.log("The status of check 1 has cleared")
+    const newEntry = new JournalEntry({
       date: document.querySelector("#journalDate").value,
       name: document.querySelector("#authorName").value,
       concept: document.querySelector("#conceptsCovered").value,
       entry: document.querySelector("#journalEntry").value,
-      mood: document.querySelector("#mood").value
+      mood: document.querySelector("#mood").value,
     })
-    journalEntry.save()
-    .then((data)=> {
-      console.log("new contact saved", data)
-      return getEntries()
-    })
-    // NEED TO FINALIZE/UPDATE THIS
-    .then(entriesList => render("contact-list", entriesList))
+    console.log(newEntry.mood)
+    console.log(newEntry.singleJournalEntry())
+    validateJournalEntry.onlyAllowedCharacters(newEntry.singleJournalEntry())
   }
 })
 
-
+  // const entry = new journalEntry({
+  //   date: document.querySelector("#journalDate").value,
+  //   name: document.querySelector("#authorName").value,
+  //   concept: document.querySelector("#conceptsCovered").value,
+  //   entry: document.querySelector("#journalEntry").value,
+  //   mood: document.querySelector("#mood").value
+  // })
+  // console.log(entry)
+  // export default entry
+  // validateJournalEntry.onlyAllowedCharacters(entry)
+  // journalEntry.save()
+  // .then((data)=> {
+    //   console.log("new contact saved", data)
+    //   return getEntries()
+  // })
+  //     // NEED TO FINALIZE/UPDATE THIS
+  //     .then(entriesList => render("contact-list", entriesList))
+  //   }
+  // }
