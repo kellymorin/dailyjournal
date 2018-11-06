@@ -10,9 +10,27 @@
 <body>
   <h1>Daily Journal</h1>
   <div id="flexbox"></div>
-  <article id="entryLog">
-
-  </article>
+  <div id="filterMoodButtons">
+    <fieldset>
+      <div>
+        <input type="radio" name="mood" value="sad" class="radioButton" id="filterSad">
+        <label for="filterSad">Sad</label>
+      </div>
+      <div>
+        <input type="radio" name="mood" value="happy" class="radioButton" id="filterHappy">
+        <label for="filterHappy">Happy</label>
+      </div>
+      <div>
+        <input type="radio" name="mood" value="fine" class="radioButton" id="filterFine">
+        <label for="filterFine">Fine</label>
+      </div>
+      <div>
+        <input type="radio" name="mood" value="frustrated" class="radioButton" id="filterFrustrated">
+        <label for="filterFrustrated">Frustrated</label>
+      </div>
+    </fieldset>
+  </div>
+  <article id="entryLog"></article>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="bundle.js"></script>

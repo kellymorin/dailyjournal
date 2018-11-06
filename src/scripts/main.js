@@ -10,10 +10,12 @@ import JournalEntry from "./journal";
 import journalEntries from "./data";
 import manageDOM from "./DOMmanager";
 import entriesList from "./entriesDOM";
+import filterEntries from "./filterEntries";
 
 if (document.readyState === "loading"){
   makePage.initiateForm();
   journalEntries.getEntries().then((data)=> entriesList.buildList(data)).then((taco)=> manageDOM.appendEntry(taco))
+  filterEntries.moodSelector();
 }
 
 

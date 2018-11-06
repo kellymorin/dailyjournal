@@ -17,7 +17,7 @@ Priority Order of Tasks:
 
 
     EXTRA PROJECT PIECES
-    Allow for radio buttons to be attached to the entrieslog section and filter entries based on selection
+
     Refactor with jQuery
     Include an ability to Cache entries
     OPTIONAL CHALLENGE:
@@ -37,5 +37,6 @@ Priority Order of Tasks:
     8. Create data module that completes both the get and post functionality to the API (COMPLETE)
     6c. if elements already exist, be sure to clear before loading again(COMPLETE)
         6a. Add event listener to main.js that calls this function on submit (COMPLETE)
+    Allow for radio buttons to be attached to the entrieslog section and filter entries based on selection (COMPLETE)
 
 */
