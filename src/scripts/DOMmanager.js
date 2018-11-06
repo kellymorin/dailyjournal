@@ -10,6 +10,10 @@ const manageDOM = {
   appendEntry: (dailyJournalEntries)=>{
     const $entryDiv =$("#entryLog")
     $entryDiv.empty().append(dailyJournalEntries)
+  },
+  appendButtons: (fieldset)=>{
+    let buttonSection = document.querySelector("#filterMoodButtons")
+    buttonSection.appendChild(fieldset)
   }
 }
 

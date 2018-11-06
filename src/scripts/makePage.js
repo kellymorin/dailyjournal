@@ -27,9 +27,19 @@ const makePage = {
     let moodSelect = makeElement.elementFactory("select", {name: "mood", id: "mood"}, null, moodOptionFine, moodOptionFrustrated, moodOptionHappy, moodOptionSad)
     let moodEntry = makeElement.elementFactory("fieldset", {}, null, moodLabel, moodSelect)
     let form = makeElement.elementFactory("form", {}, null, dateEntry, authorNameEntry, conceptsCoveredEntry, journalEntry, moodEntry, entryButton)
-    console.log(form)
     manageDOM.appendForm(form)
-    // makePage.appendForm(form)
+  },
+  createRadioButtons: ()=>{
+    let moods = ["sad", "happy", "fine", "frustrated"]
+    let fieldset = makeElement.elementFactory("fieldset", {}, null)
+    for(let i = 0; i < moods.length; i++){
+      let input = makeElement.elementFactory("input", {type: "radio", name: "mood", value: moods[i], class: "radioButton", id: `filter-${moods[i]}`})
+      let label = makeElement.elementFactory("label", {for: `filter-${moods[i]}`}, moods[i])
+      let wrapperDiv = makeElement.elementFactory("div", {}, null, input, label)
+      fieldset.appendChild(wrapperDiv)
+    }
+    manageDOM.appendButtons(fieldset)
+    // return fieldset
   }
 }
 
