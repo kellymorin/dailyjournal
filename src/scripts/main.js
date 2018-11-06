@@ -6,31 +6,34 @@ In your main JavaScript module (journal.js) add a click event listener to the Re
 
 import validateJournalEntry from "./validatedata"
 import makePage from "./makePage"
-import buildEntry from "./entryComponent"
+// import buildEntry from "./entryComponent"
 import JournalEntry from "./journal";
+import journalEntries from "./data";
+import manageDOM from "./DOMmanager";
+import entriesList from "./entriesDOM";
 
 if (document.readyState === "loading"){
   makePage.initiateForm();
 }
 
-let journal = [{
-  concept: "something",
-  date: "10/21/2018",
-  name: "Kelly",
-  mood: "happy",
-  entry: "We learned some really difficult things today."
-},
-{
-  concept: "santa",
-  date: "10/28/2018",
-  name: "Kelly",
-  mood: "sad",
-  entry: "Why santa no here yet?"
-}
+// let journal = [{
+//   concept: "something",
+//   date: "10/21/2018",
+//   name: "Kelly",
+//   mood: "happy",
+//   entry: "We learned some really difficult things today."
+// },
+// {
+//   concept: "santa",
+//   date: "10/28/2018",
+//   name: "Kelly",
+//   mood: "sad",
+//   entry: "Why santa no here yet?"
+// }
 
-]
+// ]
 
-journal.forEach((journal)=>buildEntry.makeEntryElements(journal))
+// journal.forEach((journal)=>buildEntry.makeEntryElements(journal))
 
 
 
@@ -51,28 +54,27 @@ document.querySelector("#journalEntryButton").addEventListener("click", (event)=
       entry: document.querySelector("#journalEntry").value,
       mood: document.querySelector("#mood").value,
     })
-    console.log(newEntry.mood)
-    console.log(newEntry.singleJournalEntry())
     validateJournalEntry.onlyAllowedCharacters(newEntry.singleJournalEntry())
+    if(validateJournalEntry.clearStatus === true){
+      console.log("The status of check 2 has cleared")
+      newEntry.save()
+      .then((data)=> {
+        console.log("New entry saved", data)
+        return journalEntries.getEntries()
+    })
+    .then(journalEntryList => manageDOM.appendEntry(entriesList.buildList))
+
+
+    // .then(contactList => render("contact-list", contactList))
+
+
+    } else {
+      console.log("Your submission has been terminated, please try again")
+    }
   }
 })
 
-  // const entry = new journalEntry({
-  //   date: document.querySelector("#journalDate").value,
-  //   name: document.querySelector("#authorName").value,
-  //   concept: document.querySelector("#conceptsCovered").value,
-  //   entry: document.querySelector("#journalEntry").value,
-  //   mood: document.querySelector("#mood").value
-  // })
-  // console.log(entry)
-  // export default entry
-  // validateJournalEntry.onlyAllowedCharacters(entry)
-  // journalEntry.save()
-  // .then((data)=> {
-    //   console.log("new contact saved", data)
-    //   return getEntries()
-  // })
-  //     // NEED TO FINALIZE/UPDATE THIS
-  //     .then(entriesList => render("contact-list", entriesList))
-  //   }
-  // }
+// After post, call get, then pass information to DOM manager that passes in function
+
+// Get entries, then map, then call single journal entry
+

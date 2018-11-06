@@ -1,3 +1,6 @@
+import buildEntry from "./entryComponent";
+import journalEntries from "./data";
+
 /*
 entriesDOM.js - Move the code that is responsible for modifying the DOM into this file.
 */
@@ -13,3 +16,17 @@ entriesDOM.js - Move the code that is responsible for modifying the DOM into thi
 //   })
 //   entryLog.appendChild(fragment)
 // };
+
+const entriesList = {
+  buildList: ()=>{
+    return journalEntries.getEntries()
+    .then((entries)=> buildEntry.makeEntryElements(entries))
+
+    // console.log("entries list entries", entries))
+
+    // .map(entry => buildEntry.makeEntryElements(entry)))
+
+      // buildEntry.makeEntryElements(entry)))
+  }
+}
+export default entriesList

@@ -14,19 +14,10 @@ MakeEntry: Single Responsibility: Loop over provided data and produce HTML to be
 ShowEntries.js: Single responsibility: take all entries from Make Entry and append to the DOM
 
 Priority Order of Tasks:
-  1. Complete element factory and test (COMPLETE)
-  2. create MakePage Function that has two functions that call element factory (COMPLETE)
-  3. Create function that appends the form to the DOM (COMPLETE)
-    3a. add EventListener to main that calls this function onLoad (COMPLETE)
-  4. Create function that loops over entries and calls element factory (COMPLETE)
-  5. Create function that appends the entries to the DOM (COMPLETE)
+
   6. Build form validation
-  6a. Add event listener to main.js that calls this function on submit
-  6a. Checks that all required elements are filled out and completed (COMPLETE)
-  6b. Checks that all form entries only contain required characters/ no special characters
-  6c. Checks that the entries do not contain profanity
-  7. Create a file that contains a class that can be used to store a new instance of an entry to pass to the API (COMPLETE)
-  8. Create data module that completes both the get and post functionality to the API
+    6a. Add event listener to main.js that calls this function on submit
+    6c. Checks that the entries do not contain profanity
   6. if elements already exist, be sure to clear before loading again
 
   EXTRA PROJECT PIECES
@@ -34,4 +25,16 @@ Priority Order of Tasks:
   Refactor with jQuery
   Include an ability to Cache entries
 
+
+  COMPLETED TASKS:
+    1. Complete element factory and test (COMPLETE)
+    2. create MakePage Function that has two functions that call element factory (COMPLETE)
+    3. Create function that appends the form to the DOM (COMPLETE)
+      3a. add EventListener to main that calls this function onLoad (COMPLETE)
+    4. Create function that loops over entries and calls element factory (COMPLETE)
+    5. Create function that appends the entries to the DOM (COMPLETE)
+      6a. Checks that all required elements are filled out and completed (COMPLETE)
+      6b. Checks that all form entries only contain required characters/ no special characters (COMPLETE)
+    7. Create a file that contains a class that can be used to store a new instance of an entry to pass to the API (COMPLETE)
+    8. Create data module that completes both the get and post functionality to the API (COMPLETE)
 */

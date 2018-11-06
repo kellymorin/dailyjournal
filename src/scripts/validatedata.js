@@ -1,9 +1,5 @@
-// import captureInput from "./createEntry";
-
 // ValidateData.js: Single Responsibility: take provided data and check for required section completion, curse words, and special characters
 
-// import form from "./main"
-// // import entry from "./main"
 
 const validateJournalEntry = {
   clearStatus: false,
@@ -18,22 +14,25 @@ const validateJournalEntry = {
       return validateJournalEntry.clearStatus
     } else {
       alert("please fill out all fields")
+      return
     }
   },
 
   onlyAllowedCharacters: (something)=>{
+    validateJournalEntry.clearStatus = false
     for(const input in something){
-      console.log("entry input", something[input])
-      if(something[input].match(/^([a-zA-Z0-9 _-]+)$/)){
+      if(something[input].match(/([-a-zA-Z0-9(){}:;]+)/)){
+        validateJournalEntry.clearStatus = true
         console.log("the input has been accepted")
       } else{
-        console.log("the input is invalid")
+        alert(`Your ${input} submission contains invalid characters. Please only include alphanumeric characters or (){};: and resubmit`)
+        validateJournalEntry.clearStatus = false
+        return
       }
     }
+    return validateJournalEntry.clearStatus
   }
 }
-//     // No characters other than letters, numbers, (), {}, :, and ;
-//   },
 
 //   maximumConceptEntryLength: ()=>{
 //     // Pick a maximum length for concepts field and provide visual feedback if you type in a string that is longer than that maximum.

@@ -13,19 +13,21 @@ Update DOM with updated array values.
 Write a method in your API module that performs a POST and a GET, then use that method in the event listener.
 */
 
-// const journalEntries = {
-//   getEntries: ()=>{
-//     return fetch("http://localhost:8088/entries")
-//     .then((entries) => entries.json())
-//   },
+const journalEntries = {
+  getEntries: ()=>{
+    return fetch("http://localhost:8088/entries")
+    .then((entries) => entries.json())
+  },
 
-//   saveJournalEntry: (journalEntry)=>{
-//     return fetch("http://localhost:8088/entries", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json"
-//       },
-//       body: JSON.stringify(journalEntry)
-//     })
-//   }
-// }
+  saveJournalEntry: (journalEntry)=>{
+    return fetch("http://localhost:8088/entries", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(journalEntry)
+    })
+  }
+}
+
+export default journalEntries
