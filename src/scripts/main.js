@@ -6,7 +6,6 @@ In your main JavaScript module (journal.js) add a click event listener to the Re
 
 import validateJournalEntry from "./validatedata"
 import makePage from "./makePage"
-// import buildEntry from "./entryComponent"
 import JournalEntry from "./journal";
 import journalEntries from "./data";
 import manageDOM from "./DOMmanager";
@@ -14,31 +13,9 @@ import entriesList from "./entriesDOM";
 
 if (document.readyState === "loading"){
   makePage.initiateForm();
+  journalEntries.getEntries().then((data)=> entriesList.buildList(data)).then((taco)=> manageDOM.appendEntry(taco))
 }
 
-// let journal = [{
-//   concept: "something",
-//   date: "10/21/2018",
-//   name: "Kelly",
-//   mood: "happy",
-//   entry: "We learned some really difficult things today."
-// },
-// {
-//   concept: "santa",
-//   date: "10/28/2018",
-//   name: "Kelly",
-//   mood: "sad",
-//   entry: "Why santa no here yet?"
-// }
-
-// ]
-
-// journal.forEach((journal)=>buildEntry.makeEntryElements(journal))
-
-
-
-// const form = document.querySelector("form")
-// export default form
 
 document.querySelector("#journalEntryButton").addEventListener("click", (event)=>{
   event.preventDefault()
@@ -58,23 +35,11 @@ document.querySelector("#journalEntryButton").addEventListener("click", (event)=
     if(validateJournalEntry.clearStatus === true){
       console.log("The status of check 2 has cleared")
       newEntry.save()
-      .then((data)=> {
-        console.log("New entry saved", data)
-        return journalEntries.getEntries()
-    })
-    .then(journalEntryList => manageDOM.appendEntry(entriesList.buildList))
-
-
-    // .then(contactList => render("contact-list", contactList))
-
-
+      .then((data)=> entriesList.buildList(data))
+      .then((taco)=> manageDOM.appendEntry(taco))
     } else {
       console.log("Your submission has been terminated, please try again")
     }
   }
 })
-
-// After post, call get, then pass information to DOM manager that passes in function
-
-// Get entries, then map, then call single journal entry
 
