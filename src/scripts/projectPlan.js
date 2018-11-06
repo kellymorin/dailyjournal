@@ -14,15 +14,14 @@ MakeEntry: Single Responsibility: Loop over provided data and produce HTML to be
 ShowEntries.js: Single responsibility: take all entries from Make Entry and append to the DOM
 
 Priority Order of Tasks:
-  6. Build form validation
-    6a. Add event listener to main.js that calls this function on submit
-    6c. Checks that the entries do not contain profanity
 
 
-  EXTRA PROJECT PIECES
-  Allow for radio buttons to be attached to the entrieslog section and filter entries based on selection
-  Refactor with jQuery
-  Include an ability to Cache entries
+    EXTRA PROJECT PIECES
+    Allow for radio buttons to be attached to the entrieslog section and filter entries based on selection
+    Refactor with jQuery
+    Include an ability to Cache entries
+    OPTIONAL CHALLENGE:
+    1. Checks that the entries do not contain profanity
 
 
   COMPLETED TASKS:
@@ -37,4 +36,6 @@ Priority Order of Tasks:
     7. Create a file that contains a class that can be used to store a new instance of an entry to pass to the API (COMPLETE)
     8. Create data module that completes both the get and post functionality to the API (COMPLETE)
     6c. if elements already exist, be sure to clear before loading again(COMPLETE)
+        6a. Add event listener to main.js that calls this function on submit (COMPLETE)
+
 */
