@@ -1,17 +1,4 @@
-/*
-DAILY JOURNAL 5
 
-
-
-            const contact = {
-
-              createContactCard: (contactInfo) => {
-                  let fragment = document.createDocumentFragment()
-                  fragment.appendChild(contact.makeContact(contactInfo));
-                  contactList.addToList(fragment)
-                },
-            }
-*/
 import journalEntries from "./data"
 
 class JournalEntry {

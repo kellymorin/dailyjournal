@@ -28,12 +28,18 @@ const validateJournalEntry = {
       }
     }
     return validateJournalEntry.clearStatus
+  },
+
+  maximumConceptEntryLength: () =>{
+    let conceptValue = $("#conceptsCovered").val()
+    // if(conceptValue.length < 5){
+    //   $("#conceptsCovered").removeClass("maxLength")
+    // } else
+    if(conceptValue.length > 5){
+      $("#conceptsCovered").addClass("maxLength")
+    }
   }
 }
-
-//   maximumConceptEntryLength: ()=>{
-//     // Pick a maximum length for concepts field and provide visual feedback if you type in a string that is longer than that maximum.
-//   },
 
 //   noCurseWords: ()=>{
 //     // Test that the concept and entry fields contain no curse words. You can use regular expressions for that.

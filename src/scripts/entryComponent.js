@@ -6,7 +6,6 @@ import makeElement from "./elementFactory"
 
 
 const buildEntry = {
-  // componentArray: [],
 
   makeEntryElements: (journalEntryObj)=>{
     let concept = makeElement.elementFactory("h3", {class: "journalConcept"}, journalEntryObj.concept)

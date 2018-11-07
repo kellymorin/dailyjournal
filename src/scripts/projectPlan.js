@@ -14,13 +14,10 @@ MakeEntry: Single Responsibility: Loop over provided data and produce HTML to be
 ShowEntries.js: Single responsibility: take all entries from Make Entry and append to the DOM
 
 Priority Order of Tasks:
-  2. Update to include CSS from previous Daily Journal Exercise
   3. Update alerts formatting to display in page elements, instead of as a pop-up
-  4. Clear search values once data has been captured in an object
   3. Include an ability to Cache Entries
   4. Additional validity checks:
     4a. checks that the entries do not contain profanity
-    4b. checks that the concepts learned section does not exceed a certain character limit
 
 
   COMPLETED TASKS:
@@ -43,5 +40,7 @@ Priority Order of Tasks:
     Replace element.innerHTML = htmlString with $().html(htmlString)(COMPLETE: DID NOT USE IN ORIGINAL CODE)
     Replace any code you have to obtain the value property of an input field with the jQuery .val() method.(COMPLETE)
       1.Refactor with jQuery
-
+      2. Update to include CSS from previous Daily Journal Exercise
+    4. Clear search values once data has been captured in an object
+      4b. checks that the concepts learned section does not exceed a certain character limit
 */
