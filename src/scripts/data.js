@@ -4,7 +4,7 @@ Data.js: Single Responsibility: Get and post requests, only interacts with the A
 
 const journalEntries = {
   getEntries: ()=>{
-    return fetch("http://localhost:8088/entries")
+    return fetch("http://localhost:8088/entries?_expand=mood")
     .then((entries) => entries.json())
   },
 
