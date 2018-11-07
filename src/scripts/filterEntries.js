@@ -19,9 +19,12 @@ const filterEntries = {
     return journalEntries.getEntries()
     .then((entries)=>entries.filter((entry)=> entry.mood === mood)
     ).then(taco => {
-      console.log("taco", taco)
-      taco.map(item => manageDOM.appendEntry(buildEntry.makeEntryElements(item)))
-      // manageDOM.appendEntry();
+      if (taco.length > 0){
+        console.log("taco", taco)
+        taco.map(item => manageDOM.appendEntry(buildEntry.makeEntryElements(item)))
+      } else {
+        alert("There are no entries that match your search, please try again")
+      }
     })
   }
 }
