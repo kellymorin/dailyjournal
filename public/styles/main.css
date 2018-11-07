@@ -1,3 +1,67 @@
+body{
+  background-color: #FDE8E9;
+  color: #1F2232;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.flexbox{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.formAndButton {
+  display:flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+fieldset{
+  display:flex;
+  flex-direction: column;
+  font-size: 1.25em;
+  border: 1px solid #1F2232;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+.journalConcept{
+  font-size: 1.25em;
+  font-weight: bold;
+  margin: 0;
+}
+
+.entryLog{
+  width: 50%;
+  padding: 0 50px 0 50px;
+}
+
+button{
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  padding: 7px;
+  font-size: 1em;
+  margin: 15px;
+  border-radius: 5px;
+  background-color: #D1D4D9;
+  /* color: #E3BAC6; */
+}
+
+h1 {
+  font-size: 3em;
+  font-weight: bold;
+  text-align: center;
+}
+
+.journalDate{
+  margin: 0px;
+  font-size: 0.75em;
+}
+
+.journalAuthor{
+  margin: 0 0 5px 0;
+  font-size: 0.75em;
+}
 .hide{
   display: none;
 }
