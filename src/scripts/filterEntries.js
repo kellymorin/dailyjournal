@@ -1,12 +1,12 @@
 import buildEntry from "./entryComponent";
 import journalEntries from "./data"
-import entriesList from "./entriesDOM";
+// import entriesList from "./entriesDOM";
 import manageDOM from "./DOMmanager";
 
 const filterEntries = {
   moodSelector: () =>{
     $(".radioButton").click((event)=>{
-      let filteredMood = event.target.value
+      let filteredMood = ($("input:checked").val())
       console.log(filteredMood)
       filterEntries.restrictEntries(filteredMood)
     })

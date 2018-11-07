@@ -3,16 +3,12 @@
 
 const validateJournalEntry = {
   clearStatus: false,
-
-  noEmptyValues: ()=>{
-    let form= $("form")
-    // form.validate()
+  validateForm: ()=>{
+    let form = $("form")
     console.log(form)
-    if(form.valid() === true){
-      // console.log("the form is valid")
+    if($("form > :input[required]:visible").val() !== ""){
       validateJournalEntry.clearStatus = true
       console.log(validateJournalEntry.clearStatus)
-      return validateJournalEntry.clearStatus
     } else {
       alert("please fill out all fields")
       return

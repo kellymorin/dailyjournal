@@ -14,7 +14,6 @@ MakeEntry: Single Responsibility: Loop over provided data and produce HTML to be
 ShowEntries.js: Single responsibility: take all entries from Make Entry and append to the DOM
 
 Priority Order of Tasks:
-  1.Refactor with jQuery
   2. Update to include CSS from previous Daily Journal Exercise
   3. Update alerts formatting to display in page elements, instead of as a pop-up
   4. Clear search values once data has been captured in an object
@@ -40,5 +39,9 @@ Priority Order of Tasks:
     Allow for radio buttons to be attached to the entrieslog section and filter entries based on selection (COMPLETE)
     Replace element.addEventListener("click") with $("selector").click()(COMPLETE)
     Replace document.getElementById("id") with $("#id")(COMPLETE)
+    Replace document.querySelector("selector") with $("selector")(COMPLETE)
+    Replace element.innerHTML = htmlString with $().html(htmlString)(COMPLETE: DID NOT USE IN ORIGINAL CODE)
+    Replace any code you have to obtain the value property of an input field with the jQuery .val() method.(COMPLETE)
+      1.Refactor with jQuery
 
 */

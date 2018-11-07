@@ -1,3 +1,4 @@
+// import validateJournalEntry from "./validatedata";
 
 // import makePage from "./makePage"
 const manageDOM = {
@@ -6,7 +7,8 @@ const manageDOM = {
     // let formDiv = document.querySelector("#flexbox")
     formFragment.appendChild(form)
     $("#flexbox").append(formFragment)
-    $("form").validate()
+    // validateJournalEntry.validateForm()
+    // $("form").validate()
   },
   appendEntry: (dailyJournalEntries)=>{
     const $entryDiv =$("#entryLog")
