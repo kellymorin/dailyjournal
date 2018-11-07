@@ -3,17 +3,18 @@
 const manageDOM = {
   appendForm: (form)=>{
     let formFragment = document.createDocumentFragment();
-    let formDiv = document.querySelector("#flexbox")
+    // let formDiv = document.querySelector("#flexbox")
     formFragment.appendChild(form)
-    formDiv.appendChild(formFragment)
+    $("#flexbox").append(formFragment)
+    $("form").validate()
   },
   appendEntry: (dailyJournalEntries)=>{
     const $entryDiv =$("#entryLog")
     $entryDiv.empty().append(dailyJournalEntries)
   },
   appendButtons: (fieldset)=>{
-    let buttonSection = document.querySelector("#filterMoodButtons")
-    buttonSection.appendChild(fieldset)
+    // let buttonSection = document.querySelector("#filterMoodButtons")
+    $("#filterMoodButtons").append(fieldset)
   }
 }
 

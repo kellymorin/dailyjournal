@@ -5,9 +5,10 @@ const validateJournalEntry = {
   clearStatus: false,
 
   noEmptyValues: ()=>{
-    let form= document.querySelector("form")
+    let form= $("form")
+    // form.validate()
     console.log(form)
-    if(form.checkValidity() === true){
+    if(form.valid() === true){
       // console.log("the form is valid")
       validateJournalEntry.clearStatus = true
       console.log(validateJournalEntry.clearStatus)

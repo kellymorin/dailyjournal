@@ -14,14 +14,14 @@ MakeEntry: Single Responsibility: Loop over provided data and produce HTML to be
 ShowEntries.js: Single responsibility: take all entries from Make Entry and append to the DOM
 
 Priority Order of Tasks:
-
-
-    EXTRA PROJECT PIECES
-
-    Refactor with jQuery
-    Include an ability to Cache entries
-    OPTIONAL CHALLENGE:
-    1. Checks that the entries do not contain profanity
+  1.Refactor with jQuery
+  2. Update to include CSS from previous Daily Journal Exercise
+  3. Update alerts formatting to display in page elements, instead of as a pop-up
+  4. Clear search values once data has been captured in an object
+  3. Include an ability to Cache Entries
+  4. Additional validity checks:
+    4a. checks that the entries do not contain profanity
+    4b. checks that the concepts learned section does not exceed a certain character limit
 
 
   COMPLETED TASKS:
@@ -38,5 +38,7 @@ Priority Order of Tasks:
     6c. if elements already exist, be sure to clear before loading again(COMPLETE)
         6a. Add event listener to main.js that calls this function on submit (COMPLETE)
     Allow for radio buttons to be attached to the entrieslog section and filter entries based on selection (COMPLETE)
+    Replace element.addEventListener("click") with $("selector").click()(COMPLETE)
+    Replace document.getElementById("id") with $("#id")(COMPLETE)
 
 */

@@ -5,15 +5,13 @@ import manageDOM from "./DOMmanager";
 
 const filterEntries = {
   moodSelector: () =>{
-    document.querySelectorAll(".radioButton").forEach(button=>{
-      button.addEventListener("click", (event)=>{
-        let filteredMood = event.target.value
-        console.log(filteredMood)
-        filterEntries.restrictEntries(filteredMood)
-        return filteredMood
-      })
+    $(".radioButton").click((event)=>{
+      let filteredMood = event.target.value
+      console.log(filteredMood)
+      filterEntries.restrictEntries(filteredMood)
     })
   },
+
   restrictEntries: (mood)=>{
     console.log(mood)
     return journalEntries.getEntries()
