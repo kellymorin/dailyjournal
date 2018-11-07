@@ -1,6 +1,5 @@
 import buildEntry from "./entryComponent";
 import journalEntries from "./data"
-import manageDOM from "./DOMmanager";
 
 const filterEntries = {
   moodSelector: () =>{
@@ -14,13 +13,10 @@ const filterEntries = {
     return journalEntries.getEntries()
     .then((entries)=>entries.filter((entry)=> entry.mood === mood)
     ).then(taco => {
-      if (taco.length > 0){
-        taco.map(item => manageDOM.appendEntry(buildEntry.makeEntryElements(item)))
-      } else {
-        alert("There are no entries that match your search, please try again")
-      }
+      $("#entryLog").empty()
+      taco.map(item => buildEntry.makeEntryElements(item))
     })
+    }
   }
-}
 export default filterEntries
 

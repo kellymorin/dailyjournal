@@ -1,56 +1,144 @@
 // MakePage.js: Single Responsibility: Initiate form build, call build page which loops over data and creates input elements. Calls element factory function
 
-import makeElement from "./elementFactory"
-import manageDOM from "./DOMmanager"
+import DOMComponent from "../lib/node_modules/nss-domcomponent"
 
-const makePage = {
-  buildForm: (name, type, title) => {
-    let label = makeElement.elementFactory("label", {for: name}, title)
-    let input = makeElement.elementFactory("input", {type: type, name: name, id: name, required: true})
-    let fieldset = makeElement.elementFactory("fieldset", {}, null, label, input)
-    return fieldset
-  },
-
-  initiateForm: () => {
-    let dateEntry = makePage.buildForm("journalDate", "date", "Date of entry")
-    let authorNameEntry = makePage.buildForm("authorName", "text", "Author Name");
-    let conceptsCoveredEntry = makePage.buildForm("conceptsCovered", "text", "Concepts Covered")
-    let journalEntryLabel = makeElement.elementFactory("label", {for: "journalEntry"}, "Journal Entry")
-    let journalEntryTextarea = makeElement.elementFactory("textarea", {name: "journalEntry", id: "journalEntry", cols: "60", rows: "10"})
-    let journalEntry = makeElement.elementFactory("fieldset", {}, null, journalEntryLabel, journalEntryTextarea)
-    let entryButton = makeElement.elementFactory("button", {type: "submit", id: "journalEntryButton"}, "Record Journal Entry")
-    let moodLabel = makeElement.elementFactory("label", {for: "mood", id: "moodLabel"}, "Mood for the Day")
-    let moodOptionCreator = ()=>{
-      let moodOptions = ["Happy", "Sad", "Frustrated", "Fine"]
-      moodOptions.forEach((option)=>{
-        let moodSelections = makeElement.elementFactory("option", {value: option.toLowerCase()}, option)
-        return moodSelections
-      })
-      let moodSelect = makeElement.elementFactory("select", {name: "mood", id: "mood"}, null, moodSelections)
-      return moodSelect
-      // moodSelect.appendChild(moodSelections)
-    }
-    // let moodOptionHappy = makeElement.elementFactory("option", {value: "happy"}, "Happy")
-    // let moodOptionSad = makeElement.elementFactory("option", {value: "sad"}, "Sad")
-    // let moodOptionFrustrated = makeElement.elementFactory("option", {value: "frustrated"}, "Frustrated")
-    // let moodOptionFine = makeElement.elementFactory("option", {value: "fine"}, "Fine")
-    // let moodSelect = makeElement.elementFactory("select", {name: "mood", id: "mood"}, null, moodOptionFine, moodOptionFrustrated, moodOptionHappy, moodOptionSad)
-    let moodEntry = makeElement.elementFactory("fieldset", {}, null, moodLabel, moodOptionCreator())
-    // moodSelect)
-    let form = makeElement.elementFactory("form", {}, null, dateEntry, authorNameEntry, conceptsCoveredEntry, journalEntry, moodEntry, entryButton)
-    manageDOM.appendPageItems(form, "flexbox")
-  },
-  createRadioButtons: ()=>{
-    let moods = ["sad", "happy", "fine", "frustrated"]
-    let fieldset = makeElement.elementFactory("fieldset", {}, null)
-    for(let i = 0; i < moods.length; i++){
-      let input = makeElement.elementFactory("input", {type: "radio", name: "mood", value: moods[i], class: "radioButton", id: `filter-${moods[i]}`})
-      let label = makeElement.elementFactory("label", {for: `filter-${moods[i]}`}, moods[i])
-      let wrapperDiv = makeElement.elementFactory("div", {}, null, input, label)
-      fieldset.appendChild(wrapperDiv)
-    }
-    manageDOM.appendPageItems(fieldset, "filterMoodButtons")
+class Form extends DOMComponent{
+  constructor(attributes, ...children){
+    super("form", attributes, ...children)
   }
 }
 
-export default makePage
+class Label extends DOMComponent{
+  constructor(attributes, ...children){
+    super("label", attributes, ...children)
+  }
+}
+
+class Input extends DOMComponent{
+  constructor(attributes, ...children){
+    super("input", attributes, ...children)
+  }
+}
+
+class formInput extends DOMComponent{
+  constructor(attributes){
+    super("fieldset", {},
+    new Label({
+      for: attributes.name,
+      textContent: attributes.text
+    }),
+    new Input({
+      name: attributes.name,
+      id: attributes.name,
+      type: attributes.type
+    })
+    )
+  }
+}
+
+const MakePage ={
+  makeForm: ()=>{
+    const journalForm = new Form({},
+      new formInput({
+        name: "journalDate",
+        type: "date",
+        text: "Date of Entry"
+      }),
+      new formInput({
+        name: "authorName",
+        type: "text",
+        text: "Author Name",
+      }),
+      new formInput({
+        name: "conceptsCovered",
+        type: "text",
+        text: "Concepts Covered"
+      }),
+      new DOMComponent("fieldset",{},
+      new Label({for: "journalEntry", textContent: "JournalEntry"}),
+      new DOMComponent("textarea", {name: "journalEntry", id: "journalEntry", cols: "60", rows: "10"})
+      ),
+      new DOMComponent("fieldset", {},
+        new Label({for: "mood", id: "moodLabel", textContent: "Mood for the Day"}),
+        new DOMComponent("select",{name: "mood", id: "mood"},
+          new DOMComponent("option", {value: "happy", textContent: "Happy"}),
+          new DOMComponent("option", {value: "sad", textContent: "Sad"}),
+          new DOMComponent("option", {value: "frustrated", textContent: "Frustrated"}),
+          new DOMComponent("option", {value: "fine", textContent: "Fine"}),
+        )
+
+      ),
+      new DOMComponent("button", {type: "submit", id: "journalEntryButton", textContent: "Record Journal Entry"})
+    ).render("#flexbox")
+  },
+  makeRadioButtons: () =>{
+    const filterButtons = new DOMComponent("fieldset", {},
+        new Label({
+          for: "filter-happy",
+          textContent: "Happy"
+        }),
+        new DOMComponent("input", {
+          type: "radio",
+          name: "mood",
+          value: "happy",
+          className: "radioButton",
+          id: "filter-happy"
+        }),
+        new Label({
+          for: "filter-sad",
+          textContent: "Sad"
+        }),
+        new DOMComponent("input", {
+          type: "radio",
+          name: "mood",
+          value: "sad",
+          className: "radioButton",
+          id: "filter-sad"
+        }),
+        new Label({
+          for: "filter-frustrated",
+          textContent: "Frustrated"
+        }),
+        new DOMComponent("input", {
+          type: "radio",
+          name: "mood",
+          value: "frustrated",
+          className: "radioButton",
+          id: "filter-frustrated"
+        }),
+        new Label({
+          for: "filter-fine",
+          textContent: "Fine"
+        }),
+        new DOMComponent("input", {
+          type: "radio",
+          name: "mood",
+          value: "fine",
+          className: "radioButton",
+          id: "filter-fine"
+        })
+    ).render("#filterMoodButtons")
+  }
+}
+export default MakePage
+
+
+
+
+
+
+
+
+//   createRadioButtons: ()=>{
+//     let moods = ["sad", "happy", "fine", "frustrated"]
+//     let fieldset = makeElement.elementFactory("fieldset", {}, null)
+//     for(let i = 0; i < moods.length; i++){
+//       let input = makeElement.elementFactory("input", {type: "radio", name: "mood", value: moods[i], class: "radioButton", id: `filter-${moods[i]}`})
+//       let label = makeElement.elementFactory("label", {for: `filter-${moods[i]}`}, moods[i])
+//       let wrapperDiv = makeElement.elementFactory("div", {}, null, input, label)
+//       fieldset.appendChild(wrapperDiv)
+//     }
+//     manageDOM.appendPageItems(fieldset, "filterMoodButtons")
+//   }
+// }
+

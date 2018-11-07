@@ -3,17 +3,16 @@ Main.js: Single responsibility: attach event listeners that call behavior at a s
 */
 
 import validateJournalEntry from "./validatedata"
-import makePage from "./makePage"
 import JournalEntry from "./journal";
 import journalEntries from "./data";
-import manageDOM from "./DOMmanager";
 import entriesList from "./entriesDOM";
 import filterEntries from "./filterEntries";
+import MakePage from "./makePage";
 
 if (document.readyState === "loading"){
-  makePage.initiateForm();
-  journalEntries.getEntries().then((data)=> entriesList.buildList(data)).then((taco)=> manageDOM.appendEntry(taco))
-  makePage.createRadioButtons()
+  MakePage.makeForm()
+  MakePage.makeRadioButtons()
+  journalEntries.getEntries().then((data)=> entriesList.buildList(data))
   filterEntries.moodSelector();
 }
 
@@ -38,7 +37,7 @@ $("#journalEntryButton").click((event)=>{
       console.log("The status of check 2 has cleared")
       newEntry.save()
       .then((data)=> entriesList.buildList(data))
-      .then((taco)=> manageDOM.appendEntry(taco))
+      // .then((taco)=> manageDOM.appendEntry(taco))
     } else {
       console.log("Your submission has been terminated, please try again")
     }
