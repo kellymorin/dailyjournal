@@ -20,8 +20,8 @@ const filterEntries = {
     .then((entries)=>entries.filter((entry)=> entry.mood === mood)
     ).then(taco => {
       console.log("taco", taco)
-      taco.map(item => buildEntry.makeEntryElements(item))
-      manageDOM.appendEntry();
+      taco.map(item => manageDOM.appendEntry(buildEntry.makeEntryElements(item)))
+      // manageDOM.appendEntry();
     })
   }
 }

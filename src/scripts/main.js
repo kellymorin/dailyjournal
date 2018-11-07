@@ -15,6 +15,7 @@ import filterEntries from "./filterEntries";
 if (document.readyState === "loading"){
   makePage.initiateForm();
   journalEntries.getEntries().then((data)=> entriesList.buildList(data)).then((taco)=> manageDOM.appendEntry(taco))
+  makePage.createRadioButtons()
   filterEntries.moodSelector();
 }
 
